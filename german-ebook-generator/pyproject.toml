@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "german-ebook-generator"
+version = "1.0.0"
+description = "Professioneller E-Book-Generator auf Deutsch mit PDF- und DOCX-Export"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+authors = [
+    {name = "E-Book Generator Team"}
+]
+keywords = ["ebook", "pdf", "docx", "generator", "deutsch", "german"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: German",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup",
+]
+
+dependencies = [
+    "reportlab>=4.0.0",
+    "python-docx>=1.0.0",
+    "Pillow>=10.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+]
+
+[project.scripts]
+ebook-generator = "ebook_generator.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/passaondigital/tools"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ebook_generator*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310", "py311", "py312"]
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
