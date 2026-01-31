@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Pferde-Huf-Spiel</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2d5016 0%, #4a7c23 50%, #6b8e23 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    touch-action: manipulation;
+}
+
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 1.8rem;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.stat-box .label {
+    font-weight: bold;
+    color: #4a7c23;
+}
+
+.stat-box span:not(.label) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2d5016;
+}
+
+.screen {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen.hidden {
+    display: none;
+}
+
+.start-content,
+.end-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    margin: 10px;
+}
+
+.start-content h2,
+.end-content h2 {
+    color: #2d5016;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.start-content p,
+.end-content p {
+    color: #555;
+    margin-bottom: 8px;
+    font-size: 1rem;
+}
+
+.difficulty-select {
+    margin: 20px 0;
+}
+
+.difficulty-select h3 {
+    color: #4a7c23;
+    margin-bottom: 12px;
+}
+
+.difficulty-btn {
+    padding: 12px 18px;
+    margin: 5px;
+    border: 2px solid #4a7c23;
+    background: white;
+    color: #4a7c23;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.difficulty-btn:hover, .difficulty-btn:active {
+    background: #e8f5e0;
+}
+
+.difficulty-btn.active {
+    background: #4a7c23;
+    color: white;
+}
+
+.main-btn {
+    padding: 18px 45px;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #8B4513, #A0522D);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+    margin-top: 15px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.main-btn:hover, .main-btn:active {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 69, 19, 0.5);
+}
+
+#game-area {
+    position: relative;
+    flex: 1;
+    min-height: 400px;
+}
+
+#horseshoe-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.horseshoe {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    animation: appear 0.3s ease-out;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.horseshoe svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.3));
+}
+
+.horseshoe.golden svg path {
+    fill: #FFD700;
+}
+
+.horseshoe.silver svg path {
+    fill: #C0C0C0;
+}
+
+.horseshoe.bronze svg path {
+    fill: #CD7F32;
+}
+
+.horseshoe.clicked {
+    animation: pop 0.3s ease-out forwards;
+}
+
+.horseshoe.missed {
+    animation: fade 0.3s ease-out forwards;
+}
+
+@keyframes appear {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes fade {
+    from { opacity: 1; }
+    to { opacity: 0; transform: translateY(20px); }
+}
+
+.points-popup {
+    position: fixed;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    animation: float-up 1s ease-out forwards;
+    z-index: 1000;
+}
+
+@keyframes float-up {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-50px); }
+}
+
+.final-stats {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.final-stats p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+}
+
+.final-stats span {
+    color: #8B4513;
+    font-weight: bold;
+}
+
+@media (max-width: 400px) {
+    h1 { font-size: 1.5rem; }
+    .stat-box { padding: 6px 10px; }
+    .horseshoe { width: 60px; height: 60px; }
+}
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Pferde-Huf-Spiel</h1>
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="label">Punkte:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Zeit:</span>
+                    <span id="timer">60</span>s
+                </div>
+                <div class="stat-box">
+                    <span class="label">Level:</span>
+                    <span id="level">1</span>
+                </div>
+            </div>
+        </header>
+
+        <div id="start-screen" class="screen">
+            <div class="start-content">
+                <h2>Willkommen!</h2>
+                <p>Tippe auf die Hufeisen, bevor sie verschwinden.</p>
+                <p>Je schneller, desto mehr Punkte!</p>
+                <div class="difficulty-select">
+                    <h3>Schwierigkeit:</h3>
+                    <button class="difficulty-btn active" data-difficulty="easy">Leicht</button>
+                    <button class="difficulty-btn" data-difficulty="medium">Mittel</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Schwer</button>
+                </div>
+                <button id="start-btn" class="main-btn">Starten</button>
+            </div>
+        </div>
+
+        <div id="game-area" class="screen hidden">
+            <div id="horseshoe-container"></div>
+        </div>
+
+        <div id="end-screen" class="screen hidden">
+            <div class="end-content">
+                <h2>Spiel beendet!</h2>
+                <div class="final-stats">
+                    <p>Punkte: <span id="final-score">0</span></p>
+                    <p>Level: <span id="final-level">1</span></p>
+                    <p>Getroffen: <span id="hits">0</span></p>
+                    <p>Verpasst: <span id="misses">0</span></p>
+                </div>
+                <button id="restart-btn" class="main-btn">Nochmal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+class PferdeHufSpiel {
+    constructor() {
+        this.startScreen = document.getElementById('start-screen');
+        this.gameArea = document.getElementById('game-area');
+        this.endScreen = document.getElementById('end-screen');
+        this.horseshoeContainer = document.getElementById('horseshoe-container');
+        this.scoreDisplay = document.getElementById('score');
+        this.timerDisplay = document.getElementById('timer');
+        this.levelDisplay = document.getElementById('level');
+        this.finalScoreDisplay = document.getElementById('final-score');
+        this.finalLevelDisplay = document.getElementById('final-level');
+        this.hitsDisplay = document.getElementById('hits');
+        this.missesDisplay = document.getElementById('misses');
+
+        this.score = 0;
+        this.level = 1;
+        this.hits = 0;
+        this.misses = 0;
+        this.timeLeft = 60;
+        this.isRunning = false;
+        this.difficulty = 'easy';
+
+        this.difficulties = {
+            easy: { spawnInterval: 1500, lifetime: 2500, maxHorseshoes: 3, levelUpScore: 100 },
+            medium: { spawnInterval: 1000, lifetime: 2000, maxHorseshoes: 5, levelUpScore: 150 },
+            hard: { spawnInterval: 700, lifetime: 1500, maxHorseshoes: 7, levelUpScore: 200 }
+        };
+
+        this.gameTimer = null;
+        this.spawnTimer = null;
+
+        this.horseshoeSVG = `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 80 Q10 50 20 25 Q30 5 50 5 Q70 5 80 25 Q90 50 80 80 L70 80 Q75 55 70 35 Q65 20 50 20 Q35 20 30 35 Q25 55 30 80 Z"
+                  fill="#8B4513" stroke="#5D3A1A" stroke-width="3"/>
+            <circle cx="25" cy="45" r="4" fill="#333"/>
+            <circle cx="75" cy="45" r="4" fill="#333"/>
+            <circle cx="30" cy="60" r="4" fill="#333"/>
+            <circle cx="70" cy="60" r="4" fill="#333"/>
+            <circle cx="35" cy="75" r="4" fill="#333"/>
+            <circle cx="65" cy="75" r="4" fill="#333"/>
+        </svg>`;
+
+        this.init();
+    }
+
+    init() {
+        const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                difficultyBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.difficulty = btn.dataset.difficulty;
+            });
+        });
+
+        document.getElementById('start-btn').addEventListener('click', () => this.startGame());
+        document.getElementById('restart-btn').addEventListener('click', () => this.showScreen('start'));
+    }
+
+    showScreen(screen) {
+        this.startScreen.classList.add('hidden');
+        this.gameArea.classList.add('hidden');
+        this.endScreen.classList.add('hidden');
+
+        if (screen === 'start') this.startScreen.classList.remove('hidden');
+        else if (screen === 'game') this.gameArea.classList.remove('hidden');
+        else if (screen === 'end') this.endScreen.classList.remove('hidden');
+    }
+
+    startGame() {
+        this.score = 0;
+        this.level = 1;
+        this.hits = 0;
+        this.misses = 0;
+        this.timeLeft = 60;
+        this.isRunning = true;
+        this.updateDisplays();
+        this.horseshoeContainer.innerHTML = '';
+        this.showScreen('game');
+        this.startTimers();
+    }
+
+    startTimers() {
+        const settings = this.difficulties[this.difficulty];
+
+        this.gameTimer = setInterval(() => {
+            this.timeLeft--;
+            this.timerDisplay.textContent = this.timeLeft;
+            if (this.timeLeft <= 0) this.endGame();
+        }, 1000);
+
+        this.spawnHorseshoe();
+        this.spawnTimer = setInterval(() => {
+            if (this.isRunning) this.spawnHorseshoe();
+        }, settings.spawnInterval / (1 + (this.level - 1) * 0.1));
+    }
+
+    spawnHorseshoe() {
+        const settings = this.difficulties[this.difficulty];
+        const currentHorseshoes = this.horseshoeContainer.querySelectorAll('.horseshoe:not(.clicked):not(.missed)').length;
+
+        if (currentHorseshoes >= settings.maxHorseshoes) return;
+
+        const horseshoe = document.createElement('div');
+        horseshoe.className = 'horseshoe';
+
+        const colors = ['bronze', 'silver', 'golden'];
+        const randomColor = colors[Math.floor(Math.random() * 3)];
+        horseshoe.classList.add(randomColor);
+
+        const pointValues = { bronze: 10, silver: 25, golden: 50 };
+        horseshoe.dataset.points = pointValues[randomColor];
+        horseshoe.innerHTML = this.horseshoeSVG;
+
+        const containerRect = this.horseshoeContainer.getBoundingClientRect();
+        const maxX = containerRect.width - 80;
+        const maxY = containerRect.height - 80;
+
+        horseshoe.style.left = Math.max(5, Math.random() * maxX) + 'px';
+        horseshoe.style.top = Math.max(5, Math.random() * maxY) + 'px';
+
+        const handleTap = (e) => {
+            e.preventDefault();
+            if (!horseshoe.classList.contains('clicked') && !horseshoe.classList.contains('missed')) {
+                const touch = e.touches ? e.touches[0] : e;
+                this.hitHorseshoe(horseshoe, touch.clientX, touch.clientY);
+            }
+        };
+
+        horseshoe.addEventListener('touchstart', handleTap, { passive: false });
+        horseshoe.addEventListener('click', handleTap);
+
+        this.horseshoeContainer.appendChild(horseshoe);
+
+        const lifetime = settings.lifetime / (1 + (this.level - 1) * 0.05);
+        setTimeout(() => {
+            if (!horseshoe.classList.contains('clicked') && this.isRunning) {
+                this.missHorseshoe(horseshoe);
+            }
+        }, lifetime);
+    }
+
+    hitHorseshoe(horseshoe, x, y) {
+        horseshoe.classList.add('clicked');
+
+        const points = parseInt(horseshoe.dataset.points);
+        this.score += points * this.level;
+        this.hits++;
+
+        this.showPointsPopup(x, y, points * this.level);
+        this.checkLevelUp();
+        this.updateDisplays();
+
+        setTimeout(() => {
+            if (horseshoe.parentNode) horseshoe.remove();
+        }, 300);
+    }
+
+    missHorseshoe(horseshoe) {
+        if (horseshoe.classList.contains('clicked')) return;
+        horseshoe.classList.add('missed');
+        this.misses++;
+
+        setTimeout(() => {
+            if (horseshoe.parentNode) horseshoe.remove();
+        }, 300);
+    }
+
+    showPointsPopup(x, y, points) {
+        const popup = document.createElement('div');
+        popup.className = 'points-popup';
+        popup.textContent = '+' + points;
+        popup.style.left = x + 'px';
+        popup.style.top = y + 'px';
+        document.body.appendChild(popup);
+        setTimeout(() => popup.remove(), 1000);
+    }
+
+    checkLevelUp() {
+        const settings = this.difficulties[this.difficulty];
+        const requiredScore = settings.levelUpScore * this.level;
+
+        if (this.score >= requiredScore) {
+            this.level++;
+            this.levelDisplay.textContent = this.level;
+
+            clearInterval(this.spawnTimer);
+            const newInterval = settings.spawnInterval / (1 + (this.level - 1) * 0.1);
+            this.spawnTimer = setInterval(() => {
+                if (this.isRunning) this.spawnHorseshoe();
+            }, newInterval);
+        }
+    }
+
+    updateDisplays() {
+        this.scoreDisplay.textContent = this.score;
+        this.levelDisplay.textContent = this.level;
+    }
+
+    endGame() {
+        this.isRunning = false;
+        clearInterval(this.gameTimer);
+        clearInterval(this.spawnTimer);
+        this.horseshoeContainer.innerHTML = '';
+        this.finalScoreDisplay.textContent = this.score;
+        this.finalLevelDisplay.textContent = this.level;
+        this.hitsDisplay.textContent = this.hits;
+        this.missesDisplay.textContent = this.misses;
+        this.showScreen('end');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => new PferdeHufSpiel());
+    </script>
+</body>
+</html>
