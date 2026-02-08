@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PferdeWelt - Alles rund ums Pferd</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="logo">
+                <span class="logo-icon">&#127943;</span> PferdeWelt
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Navigation umschalten">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Start</a></li>
+                <li><a href="#rassen">Rassen</a></li>
+                <li><a href="#pflege">Pflege</a></li>
+                <li><a href="#disziplinen">Disziplinen</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#fakten">Fakten</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Die Welt der Pferde</h1>
+            <p>Entdecken Sie die Schönheit, Kraft und Anmut dieser majestätischen Tiere</p>
+            <a href="#rassen" class="btn btn-primary">Entdecken</a>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scrollen</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Rassen Section -->
+    <section class="section rassen" id="rassen">
+        <div class="container">
+            <h2 class="section-title">Beliebte Pferderassen</h2>
+            <p class="section-subtitle">Jede Rasse hat ihren eigenen Charakter und ihre besonderen Merkmale</p>
+
+            <div class="card-grid">
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-araber"></div>
+                    <div class="card-content">
+                        <h3>Araber</h3>
+                        <span class="card-tag">Edelblut</span>
+                        <p>Eine der ältesten Pferderassen der Welt. Bekannt für ihre Ausdauer, Eleganz und den markanten Kopf mit dem konkaven Profil.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 142-155 cm</li>
+                            <li><strong>Charakter:</strong> Sensibel, intelligent, ausdauernd</li>
+                            <li><strong>Herkunft:</strong> Arabische Halbinsel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-friese"></div>
+                    <div class="card-content">
+                        <h3>Friese</h3>
+                        <span class="card-tag">Barockpferd</span>
+                        <p>Majestätische schwarze Pferde aus den Niederlanden mit üppiger Mähne und Behang. Bekannt für ihren raumgreifenden Trab.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 155-170 cm</li>
+                            <li><strong>Charakter:</strong> Sanftmütig, arbeitswillig, treu</li>
+                            <li><strong>Herkunft:</strong> Friesland, Niederlande</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-hannoveraner"></div>
+                    <div class="card-content">
+                        <h3>Hannoveraner</h3>
+                        <span class="card-tag">Warmblut</span>
+                        <p>Eine der erfolgreichsten Sportpferderassen weltweit. Hervorragend in Dressur und Springen mit elegantem Erscheinungsbild.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 160-175 cm</li>
+                            <li><strong>Charakter:</strong> Leistungsbereit, ausgeglichen, edel</li>
+                            <li><strong>Herkunft:</strong> Niedersachsen, Deutschland</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-islaender"></div>
+                    <div class="card-content">
+                        <h3>Isländer</h3>
+                        <span class="card-tag">Gangpferd</span>
+                        <p>Robuste Pferde aus Island, die neben den drei Grundgangarten auch Tölt und Pass beherrschen. Ideal für Freizeitreiter.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 125-145 cm</li>
+                            <li><strong>Charakter:</strong> Robust, freundlich, mutig</li>
+                            <li><strong>Herkunft:</strong> Island</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-andalusier"></div>
+                    <div class="card-content">
+                        <h3>Andalusier</h3>
+                        <span class="card-tag">PRE</span>
+                        <p>Edle spanische Pferde mit kompaktem Körperbau und üppiger Mähne. Meister der klassischen Dressur und Working Equitation.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 155-165 cm</li>
+                            <li><strong>Charakter:</strong> Stolz, gelehrig, temperamentvoll</li>
+                            <li><strong>Herkunft:</strong> Andalusien, Spanien</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card" data-aos="fade-up">
+                    <div class="card-image card-image-haflinger"></div>
+                    <div class="card-content">
+                        <h3>Haflinger</h3>
+                        <span class="card-tag">Gebirgspferd</span>
+                        <p>Die goldenen Pferde aus Südtirol mit ihrer charakteristischen Fuchsfarbe und hellen Mähne. Vielseitig und familienfreundlich.</p>
+                        <ul class="card-details">
+                            <li><strong>Stockmaß:</strong> 138-150 cm</li>
+                            <li><strong>Charakter:</strong> Gutmütig, trittsicher, genügsam</li>
+                            <li><strong>Herkunft:</strong> Südtirol, Italien/Österreich</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pflege Section -->
+    <section class="section pflege" id="pflege">
+        <div class="container">
+            <h2 class="section-title">Pferdepflege & Haltung</h2>
+            <p class="section-subtitle">Grundlagen für das Wohlbefinden Ihres Pferdes</p>
+
+            <div class="pflege-grid">
+                <div class="pflege-item">
+                    <div class="pflege-icon">&#129716;</div>
+                    <h3>Fütterung</h3>
+                    <p>Pferde benötigen täglich mindestens 1,5-2 kg Raufutter pro 100 kg Körpergewicht. Heu und Gras bilden die Grundlage einer gesunden Ernährung. Kraftfutter wird je nach Arbeitsbelastung ergänzt.</p>
+                    <ul>
+                        <li>Heu: Hauptbestandteil der Fütterung</li>
+                        <li>Frisches Wasser: 30-60 Liter täglich</li>
+                        <li>Mineralfutter als Ergänzung</li>
+                        <li>Fütterungszeiten regelmäßig einhalten</li>
+                    </ul>
+                </div>
+
+                <div class="pflege-item">
+                    <div class="pflege-icon">&#128167;</div>
+                    <h3>Fellpflege</h3>
+                    <p>Regelmäßiges Putzen fördert die Durchblutung und stärkt die Bindung zwischen Pferd und Mensch. Es schützt vor Hautproblemen und hält das Fell gesund.</p>
+                    <ul>
+                        <li>Striegel für groben Schmutz</li>
+                        <li>Kardätsche für feinen Staub</li>
+                        <li>Hufkratzer vor und nach dem Reiten</li>
+                        <li>Mähne und Schweif regelmäßig bürsten</li>
+                    </ul>
+                </div>
+
+                <div class="pflege-item">
+                    <div class="pflege-icon">&#127968;</div>
+                    <h3>Haltung</h3>
+                    <p>Pferde sind Herdentiere und benötigen Sozialkontakte. Artgerechte Haltung umfasst ausreichend Platz, Weidegang und Beschäftigung.</p>
+                    <ul>
+                        <li>Mindestens 3x3 m Boxengröße</li>
+                        <li>Täglicher Weidegang oder Auslauf</li>
+                        <li>Kontakt zu Artgenossen</li>
+                        <li>Offenstall als ideale Haltungsform</li>
+                    </ul>
+                </div>
+
+                <div class="pflege-item">
+                    <div class="pflege-icon">&#9764;&#65039;</div>
+                    <h3>Gesundheit</h3>
+                    <p>Regelmäßige Gesundheitsvorsorge ist essenziell. Dazu gehören Impfungen, Wurmkuren und Zahnkontrollen sowie der regelmäßige Besuch des Hufschmieds.</p>
+                    <ul>
+                        <li>Impfungen: Tetanus, Influenza, Herpes</li>
+                        <li>Hufschmied alle 6-8 Wochen</li>
+                        <li>Zahnkontrolle jährlich</li>
+                        <li>Wurmkuren nach Kotprobe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disziplinen Section -->
+    <section class="section disziplinen" id="disziplinen">
+        <div class="container">
+            <h2 class="section-title">Reitsport-Disziplinen</h2>
+            <p class="section-subtitle">Von klassischer Dressur bis Western - die Vielfalt des Reitsports</p>
+
+            <div class="disziplinen-tabs">
+                <button class="tab-btn active" data-tab="dressur">Dressur</button>
+                <button class="tab-btn" data-tab="springen">Springen</button>
+                <button class="tab-btn" data-tab="vielseitigkeit">Vielseitigkeit</button>
+                <button class="tab-btn" data-tab="western">Western</button>
+                <button class="tab-btn" data-tab="distanz">Distanzreiten</button>
+            </div>
+
+            <div class="tab-content active" id="dressur">
+                <div class="tab-inner">
+                    <div class="tab-text">
+                        <h3>Dressurreiten</h3>
+                        <p>Die Dressur gilt als die Grundlage aller Reitdisziplinen und hat ihre Wurzeln in der klassischen Reitkunst. Ziel ist die harmonische Gymnastizierung des Pferdes.</p>
+                        <p>In Prüfungen werden vorgegebene Lektionen in einer 20x60 Meter großen Bahn geritten. Die Bewertung erfolgt durch Richter, die Kriterien wie Takt, Losgelassenheit, Anlehnung, Schwung, Geraderichtung und Versammlung beurteilen.</p>
+                        <h4>Bekannte Lektionen:</h4>
+                        <ul>
+                            <li>Piaffe - Trab auf der Stelle</li>
+                            <li>Passage - Erhöhter Trab in Zeitlupe</li>
+                            <li>Pirouette - Wendung um die Hinterhand</li>
+                            <li>Fliegende Galoppwechsel</li>
+                        </ul>
+                    </div>
+                    <div class="tab-visual">
+                        <div class="discipline-illustration dressur-illustration">
+                            <div class="arena">
+                                <div class="arena-letter" style="top: 0; left: 50%">C</div>
+                                <div class="arena-letter" style="top: 50%; left: 0">E</div>
+                                <div class="arena-letter" style="top: 50%; right: 0">B</div>
+                                <div class="arena-letter" style="bottom: 0; left: 50%">A</div>
+                                <div class="horse-path"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="springen">
+                <div class="tab-inner">
+                    <div class="tab-text">
+                        <h3>Springreiten</h3>
+                        <p>Beim Springreiten muss ein Parcours mit verschiedenen Hindernissen in einer vorgegebenen Reihenfolge und Zeit fehlerfrei überwunden werden.</p>
+                        <p>Die Hindernishöhen reichen von 80 cm in Anfängerprüfungen bis über 160 cm in internationalen Grand Prix. Strafpunkte gibt es für Abwürfe, Verweigerungen und Zeitüberschreitungen.</p>
+                        <h4>Hindernistypen:</h4>
+                        <ul>
+                            <li>Steilsprung - einzelne Stange</li>
+                            <li>Oxer - zwei Stangen hintereinander</li>
+                            <li>Kombination - mehrere Sprünge in Folge</li>
+                            <li>Wassergraben</li>
+                        </ul>
+                    </div>
+                    <div class="tab-visual">
+                        <div class="discipline-illustration springen-illustration">
+                            <div class="jump-course">
+                                <div class="jump" style="top: 20%; left: 30%"></div>
+                                <div class="jump" style="top: 40%; left: 60%"></div>
+                                <div class="jump" style="top: 65%; left: 35%"></div>
+                                <div class="jump" style="top: 80%; left: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="vielseitigkeit">
+                <div class="tab-inner">
+                    <div class="tab-text">
+                        <h3>Vielseitigkeitsreiten</h3>
+                        <p>Die Königsdisziplin des Reitsports vereint Dressur, Geländeritt und Springreiten in einem Wettkampf. Es wird die umfassendste Ausbildung von Pferd und Reiter geprüft.</p>
+                        <p>Der Geländeteil ist dabei das Herzstück: Auf einer Strecke von bis zu 6 km müssen feste Naturhindernisse wie Gräben, Baumstämme und Wasserpassagen bewältigt werden.</p>
+                        <h4>Die drei Teilprüfungen:</h4>
+                        <ul>
+                            <li>Tag 1: Dressur - Grundausbildung zeigen</li>
+                            <li>Tag 2: Gelände - Mut und Ausdauer</li>
+                            <li>Tag 3: Springen - Abschlussprüfung</li>
+                        </ul>
+                    </div>
+                    <div class="tab-visual">
+                        <div class="discipline-illustration vielseitigkeit-illustration">
+                            <div class="triathlon-icons">
+                                <div class="tri-icon">D</div>
+                                <div class="tri-connector"></div>
+                                <div class="tri-icon">G</div>
+                                <div class="tri-connector"></div>
+                                <div class="tri-icon">S</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="western">
+                <div class="tab-inner">
+                    <div class="tab-text">
+                        <h3>Westernreiten</h3>
+                        <p>Das Westernreiten hat seinen Ursprung in der Arbeitsreitweise der amerikanischen Cowboys. Es zeichnet sich durch einhändiges Reiten am losen Zügel aus.</p>
+                        <p>Moderne Westernreitdisziplinen wie Reining, Cutting und Trail erfreuen sich auch in Europa wachsender Beliebtheit.</p>
+                        <h4>Beliebte Disziplinen:</h4>
+                        <ul>
+                            <li>Reining - "Dressur des Westens" mit Sliding Stops</li>
+                            <li>Cutting - Rind aus der Herde separieren</li>
+                            <li>Trail - Geschicklichkeitsparcours</li>
+                            <li>Barrel Racing - Speedrennen um Tonnen</li>
+                        </ul>
+                    </div>
+                    <div class="tab-visual">
+                        <div class="discipline-illustration western-illustration">
+                            <div class="western-scene">
+                                <div class="cactus"></div>
+                                <div class="barrel"></div>
+                                <div class="barrel"></div>
+                                <div class="barrel"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="distanz">
+                <div class="tab-inner">
+                    <div class="tab-text">
+                        <h3>Distanzreiten</h3>
+                        <p>Beim Distanzreiten werden Strecken von 40 bis 160 km in möglichst kurzer Zeit zurückgelegt. Dabei steht das Wohlergehen des Pferdes an oberster Stelle.</p>
+                        <p>An sogenannten Vet-Gates werden die Pferde tierärztlich untersucht. Nur wenn alle Gesundheitsparameter stimmen, darf weitergeritten werden.</p>
+                        <h4>Wettkampfklassen:</h4>
+                        <ul>
+                            <li>Einsteiger: 40 km</li>
+                            <li>Kurzdistanz: 60-80 km</li>
+                            <li>Mitteldistanz: 80-120 km</li>
+                            <li>Langdistanz: 120-160 km</li>
+                        </ul>
+                    </div>
+                    <div class="tab-visual">
+                        <div class="discipline-illustration distanz-illustration">
+                            <div class="distance-track">
+                                <div class="checkpoint" style="left: 0%">Start</div>
+                                <div class="checkpoint" style="left: 33%">VG 1</div>
+                                <div class="checkpoint" style="left: 66%">VG 2</div>
+                                <div class="checkpoint" style="left: 100%">Ziel</div>
+                                <div class="track-line"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie Section -->
+    <section class="section galerie" id="galerie">
+        <div class="container">
+            <h2 class="section-title">Galerie</h2>
+            <p class="section-subtitle">Wunderschöne Pferdemomente eingefangen</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item gallery-item-large">
+                    <div class="gallery-placeholder" style="--hue: 25">
+                        <span>Galoppierende Pferde im Sonnenuntergang</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder" style="--hue: 35">
+                        <span>Fohlen auf der Weide</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder" style="--hue: 120">
+                        <span>Pferd im Morgennebel</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder" style="--hue: 200">
+                        <span>Dressur-Eleganz</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-tall">
+                    <div class="gallery-placeholder" style="--hue: 280">
+                        <span>Schwarzer Friese</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder" style="--hue: 45">
+                        <span>Haflinger in den Bergen</span>
+                    </div>
+                </div>
+                <div class="gallery-item gallery-item-wide">
+                    <div class="gallery-placeholder" style="--hue: 10">
+                        <span>Wildpferde in der Steppe</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-placeholder" style="--hue: 160">
+                        <span>Springturnier</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fakten Section -->
+    <section class="section fakten" id="fakten">
+        <div class="container">
+            <h2 class="section-title">Faszinierende Pferdefakten</h2>
+            <p class="section-subtitle">Wussten Sie schon?</p>
+
+            <div class="fakten-grid">
+                <div class="fakt-card">
+                    <div class="fakt-number">360°</div>
+                    <h3>Sichtfeld</h3>
+                    <p>Pferde können fast rundherum sehen. Nur direkt vor der Nase und direkt hinter dem Schweif haben sie einen toten Winkel.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">70 km/h</div>
+                    <h3>Höchstgeschwindigkeit</h3>
+                    <p>Im Galopp können Vollblüter Geschwindigkeiten von bis zu 70 km/h erreichen. Der schnellste gemessene Sprint lag bei 70,76 km/h.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">25-30</div>
+                    <h3>Lebenserwartung</h3>
+                    <p>Pferde werden im Durchschnitt 25 bis 30 Jahre alt. Das älteste bekannte Pferd "Old Billy" wurde stolze 62 Jahre alt.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">16</div>
+                    <h3>Gesichtsausdrücke</h3>
+                    <p>Pferde haben mehr Gesichtsausdrücke als Schimpansen. Sie können mit ihren Ohren, Augen und Nüstern komplex kommunizieren.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">4</div>
+                    <h3>Gangarten</h3>
+                    <p>Die drei Grundgangarten sind Schritt, Trab und Galopp. Einige Rassen beherrschen zusätzlich den Tölt oder Pass.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">40</div>
+                    <h3>Zähne</h3>
+                    <p>Ein erwachsenes Pferd hat bis zu 40 Zähne. An den Zähnen lässt sich das Alter eines Pferdes ungefähr bestimmen.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">15 min</div>
+                    <h3>Schlaf im Liegen</h3>
+                    <p>Pferde brauchen nur etwa 15-30 Minuten Tiefschlaf im Liegen pro Tag. Den Rest ruhen sie im Stehen dank eines speziellen Sehnenapparats.</p>
+                </div>
+
+                <div class="fakt-card">
+                    <div class="fakt-number">5000+</div>
+                    <h3>Jahre Domestikation</h3>
+                    <p>Pferde wurden vor über 5000 Jahren in den Steppen Zentralasiens domestiziert und haben seitdem die Menschheitsgeschichte geprägt.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zitat Section -->
+    <section class="section zitat">
+        <div class="container">
+            <blockquote class="quote">
+                <p>&bdquo;Das Glück der Erde liegt auf dem Rücken der Pferde.&ldquo;</p>
+                <cite>- Deutsches Sprichwort</cite>
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section class="section kontakt" id="kontakt">
+        <div class="container">
+            <h2 class="section-title">Kontakt</h2>
+            <p class="section-subtitle">Haben Sie Fragen oder möchten Sie mehr erfahren?</p>
+
+            <div class="kontakt-grid">
+                <div class="kontakt-info">
+                    <h3>PferdeWelt</h3>
+                    <p>Ihr Portal für alles rund ums Pferd. Ob Anfänger oder erfahrener Reiter - bei uns finden Sie wertvolle Informationen und eine leidenschaftliche Community.</p>
+
+                    <div class="info-item">
+                        <span class="info-icon">&#128205;</span>
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>Reitweg 42, 80331 München</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">&#128222;</span>
+                        <div>
+                            <strong>Telefon</strong>
+                            <p>+49 (0) 89 123 456 78</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <span class="info-icon">&#9993;</span>
+                        <div>
+                            <strong>E-Mail</strong>
+                            <p>info@pferdewelt.de</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="kontakt-form" id="kontaktForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Ihr Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" required placeholder="ihre@email.de">
+                    </div>
+                    <div class="form-group">
+                        <label for="betreff">Betreff</label>
+                        <select id="betreff" name="betreff">
+                            <option value="allgemein">Allgemeine Anfrage</option>
+                            <option value="beratung">Pferdehaltung-Beratung</option>
+                            <option value="reitunterricht">Reitunterricht</option>
+                            <option value="sonstiges">Sonstiges</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nachricht">Nachricht</label>
+                        <textarea id="nachricht" name="nachricht" rows="5" required placeholder="Ihre Nachricht..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4><span class="logo-icon">&#127943;</span> PferdeWelt</h4>
+                    <p>Ihr Portal rund ums Pferd - mit Herz und Sachverstand seit 2024.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Schnelllinks</h4>
+                    <ul>
+                        <li><a href="#rassen">Pferderassen</a></li>
+                        <li><a href="#pflege">Pferdepflege</a></li>
+                        <li><a href="#disziplinen">Disziplinen</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                        <li><a href="#">Cookie-Einstellungen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Folgen Sie uns</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">FB</a>
+                        <a href="#" class="social-link" aria-label="Instagram">IG</a>
+                        <a href="#" class="social-link" aria-label="YouTube">YT</a>
+                        <a href="#" class="social-link" aria-label="TikTok">TT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PferdeWelt. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
