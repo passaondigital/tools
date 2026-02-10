@@ -391,6 +391,102 @@ Oberfläche gefällt, lohnt sich das eigene Deployment.
 
 ---
 
+## Dein konkretes Setup: Hufmanager, Supabase, All-Inkl Domain
+
+### Brauchst du einen teuren VPS? NEIN!
+
+VibeSDK läuft komplett auf **Cloudflare's Serverless-Infrastruktur**.
+Du brauchst:
+
+| Brauchst du... | Antwort |
+|---|---|
+| Einen VPS (Virtual Server)? | **NEIN.** Alles läuft auf Cloudflare. |
+| Einen eigenen Server? | **NEIN.** Serverless = kein Server nötig. |
+| Linux-Admin-Kenntnisse? | **NEIN.** Kein Server = nichts zu administrieren. |
+| Docker/Kubernetes? | **NEIN.** Cloudflare macht das alles. |
+| Ein teures Hosting-Paket? | **NEIN.** Nur den Cloudflare Workers Paid Plan ($5/Mo). |
+
+**Das ist der grosse Vorteil von Serverless:** Du zahlst nur was du nutzt,
+es gibt keinen Server der 24/7 läuft und Geld kostet, und Cloudflare
+kümmert sich um Updates, Sicherheit und Skalierung.
+
+### Supabase weiter nutzen: JA, problemlos!
+
+Dein Hufmanager-Setup (React Frontend via Lovable + Supabase als Datenbank)
+ist **genau der gleiche Tech-Stack** den VibeSDK generiert:
+
+**Lovable generiert:** React + TypeScript + Tailwind + Supabase
+**VibeSDK generiert:** React + TypeScript + Tailwind + (beliebige DB)
+
+Das heisst:
+- **Supabase bleibt.** Deine Datenbank, Auth, API — alles bleibt bestehen.
+- **Supabase Free Tier** reicht für viele Projekte (500 MB DB, 1 GB Storage,
+  50.000 Auth-User)
+- Du gibst in VibeSDK einfach an: "Nutze Supabase als Backend" — die KI
+  generiert den passenden Code mit `@supabase/supabase-js`
+- Deine bestehenden Supabase-Projekte (Hufmanager) sind davon unberührt
+
+**Kosten Supabase:**
+
+| Plan | Kosten | Was du bekommst |
+|---|---|---|
+| Free | $0/Monat | 500 MB DB, 1 GB Storage, 50K Auth-User |
+| Pro | $25/Monat | 8 GB DB, 100 GB Storage, unbegr. Auth-User |
+
+Für die meisten Projekte reicht der **Free Tier** von Supabase völlig aus.
+
+### Deine All-Inkl Domain nutzen: JA, möglich!
+
+Du kannst deine kostenlose All-Inkl Domain für VibeSDK verwenden.
+Es gibt **zwei Wege**:
+
+#### Weg 1: Nameserver zu Cloudflare umstellen (empfohlen)
+
+1. Domain in Cloudflare hinzufügen (kostenloser Plan reicht)
+2. In der All-Inkl **Members Area** → Domainverwaltung → Nameserver ändern
+3. Die Cloudflare-Nameserver eintragen (z.B. `adam.ns.cloudflare.com`)
+4. Warten bis die Änderung propagiert ist (~1–24 Stunden)
+5. In Cloudflare Workers eine **Custom Domain** anlegen
+6. Fertig — deine VibeSDK-Plattform läuft unter deiner Domain
+
+**All-Inkl hat dafür sogar eine eigene Anleitung:**
+[all-inkl.com/anleitungen/cloudflare](https://all-inkl.com/wichtig/anleitungen/kas/tools/dns-werkzeuge/cloudflare_491.html)
+
+**Wichtig:** Dein All-Inkl Hosting-Paket bleibt bestehen. Du änderst nur
+die Nameserver — E-Mail und andere Dienste können weiterlaufen.
+
+#### Weg 2: Subdomain per CNAME (wenn Nameserver bei All-Inkl bleiben sollen)
+
+1. In All-Inkl KAS → Tools → DNS-Einstellungen
+2. CNAME-Eintrag anlegen: `app.deinedomain.de` → `dein-projekt.workers.dev`
+3. **Einschränkung:** Funktioniert nur für Subdomains, nicht für die
+   Hauptdomain. Und Workers Custom Domains brauchen eigentlich
+   Cloudflare-Nameserver.
+
+**Empfehlung:** Weg 1 ist einfacher und zuverlässiger.
+
+### Komplettes Kosten-Setup: Dein Szenario
+
+| Posten | Kosten/Monat | Bemerkung |
+|---|---|---|
+| **All-Inkl Hosting** | 0€ (im Paket) | Domain bleibt kostenlos |
+| **Cloudflare Free Plan** | 0€ | Für DNS und Domain-Management |
+| **Cloudflare Workers Paid** | ~5€ | Basis für VibeSDK |
+| **Workers for Platforms** | ~23€ | Für App-Deployment |
+| **Supabase Free Tier** | 0€ | Datenbank für deine Apps |
+| **Gemini Flash API** | ~5–15€ | KI-Kosten (variabel) |
+| **GESAMT** | **~33–43€/Monat** | **Statt 100€+ mit Lovable+Bolt** |
+
+**Kostenlos dabei:**
+- Deine All-Inkl Domain
+- Cloudflare DNS (Free Plan)
+- Supabase Datenbank (Free Tier)
+- GitHub (Free)
+- VibeSDK Software (MIT-Lizenz, Open Source)
+- Cloudflare SSL-Zertifikate (automatisch)
+
+---
+
 ## Quellen
 
 - [Cloudflare Blog: Deploy your own AI vibe coding platform](https://blog.cloudflare.com/deploy-your-own-ai-vibe-coding-platform/)
@@ -402,3 +498,7 @@ Oberfläche gefällt, lohnt sich das eigene Deployment.
 - [Google Gemini API Pricing](https://ai.google.dev/gemini-api/docs/pricing)
 - [Lovable.dev Pricing](https://www.superblocks.com/blog/lovable-dev-pricing)
 - [Bolt.new Pricing](https://bolt.new/pricing)
+- [Cloudflare Workers Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
+- [All-Inkl Cloudflare Anleitung](https://all-inkl.com/wichtig/anleitungen/kas/tools/dns-werkzeuge/cloudflare_491.html)
+- [Supabase Pricing](https://supabase.com/pricing)
+- [Supabase for Vibe Coders](https://supabase.com/solutions/vibe-coders)
