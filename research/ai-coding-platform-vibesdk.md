@@ -465,25 +465,118 @@ die Nameserver — E-Mail und andere Dienste können weiterlaufen.
 
 **Empfehlung:** Weg 1 ist einfacher und zuverlässiger.
 
-### Komplettes Kosten-Setup: Dein Szenario
+### Komplettes Kosten-Setup: 3 Optionen
 
-| Posten | Kosten/Monat | Bemerkung |
+#### Option A: Volles VibeSDK (eigene Plattform) — ~33–43€/Monat
+
+Du betreibst deine **eigene komplette Coding-Plattform** wie Bolt/Lovable.
+Apps werden per Knopfdruck deployed, jede bekommt eine eigene URL.
+
+| Posten | Kosten/Monat | Nötig? |
 |---|---|---|
-| **All-Inkl Hosting** | 0€ (im Paket) | Domain bleibt kostenlos |
-| **Cloudflare Free Plan** | 0€ | Für DNS und Domain-Management |
-| **Cloudflare Workers Paid** | ~5€ | Basis für VibeSDK |
-| **Workers for Platforms** | ~23€ | Für App-Deployment |
-| **Supabase Free Tier** | 0€ | Datenbank für deine Apps |
-| **Gemini Flash API** | ~5–15€ | KI-Kosten (variabel) |
-| **GESAMT** | **~33–43€/Monat** | **Statt 100€+ mit Lovable+Bolt** |
+| All-Inkl Domain | 0€ | Im Paket |
+| Cloudflare Free Plan (DNS) | 0€ | Ja |
+| **Cloudflare Workers Paid** | **~5€** | **JA** — VibeSDK-Backend läuft darauf |
+| **Workers for Platforms** | **~23€** | **JA** — für One-Click-App-Deployment |
+| Supabase Free Tier | 0€ | Optional |
+| Gemini Flash API | ~5–15€ | Ja |
+| **GESAMT** | **~33–43€/Mo** | |
 
-**Kostenlos dabei:**
+**Wann diese Option wählen:**
+- Du willst die volle Bolt/Lovable-Erfahrung
+- Du willst Apps mit einem Klick deployen
+- Du willst die Plattform evtl. auch anderen anbieten
+- Du brauchst Live-Preview in Sandboxen
+
+#### Option B: VibeSDK-Demo + Gratis-Hosting — ~0–15€/Monat (!)
+
+Du nutzt die **kostenlose Demo** auf
+[build.cloudflare.dev](https://build.cloudflare.dev) zum Generieren,
+exportierst den Code nach **GitHub**, und deployst gratis auf
+**Cloudflare Pages** oder **Vercel**.
+
+| Posten | Kosten/Monat | Nötig? |
+|---|---|---|
+| build.cloudflare.dev (Demo) | 0€ | Kostenlos nutzbar |
+| GitHub | 0€ | Kostenlos |
+| **Cloudflare Pages** | **0€** | Gratis: 500 Builds/Mo, unlim. Bandwidth |
+| **ODER Vercel Free** | **0€** | Gratis: Hobby-Plan, perfekt für React |
+| Supabase Free Tier | 0€ | Datenbank gratis |
+| Gemini API (falls eigene Keys) | 0–15€ | Nur wenn du eigene Keys nutzt |
+| **GESAMT** | **~0–15€/Mo** | |
+
+**Workflow:**
+1. Auf build.cloudflare.dev dein Projekt beschreiben
+2. Die KI generiert den Code
+3. Code nach GitHub exportieren (Button in VibeSDK)
+4. GitHub-Repo mit Cloudflare Pages oder Vercel verbinden
+5. Jeder Push = automatisches Deployment, kostenlos
+
+**Wann diese Option wählen:**
+- Du willst **so günstig wie möglich**
+- Du baust Apps hauptsächlich für dich selbst
+- Du kennst schon den GitHub-Workflow (Hufmanager!)
+- Dir ist egal ob du 2 Klicks mehr brauchst zum Deployen
+
+**Einschränkung:**
+- Die Demo auf build.cloudflare.dev hat evtl. Nutzungslimits
+  (Rate Limiting, Fair-Use)
+- Kein eigenes Dashboard, keine volle Kontrolle
+- Keine Live-Preview in Sandboxen — du siehst das Ergebnis erst
+  nach dem Deploy
+
+#### Option C: Ganz ohne VibeSDK — 0€/Monat
+
+Du machst weiter wie bisher mit dem Screenshot-Workflow, aber
+deployst deine Apps **gratis** statt über Lovable:
+
+| Posten | Kosten/Monat |
+|---|---|
+| Lovable/Bolt Free Tier | 0€ (für kleine Änderungen) |
+| ChatGPT/Gemini Free | 0€ |
+| GitHub | 0€ |
+| Cloudflare Pages / Vercel | 0€ |
+| Supabase Free | 0€ |
+| **GESAMT** | **0€/Mo** |
+
+**Workflow:**
+1. Lovable/Bolt Free Tier für den Grossteil nutzen
+2. Bei Limit: Screenshot → ChatGPT/Gemini → Code manuell einfügen
+3. Code via GitHub auf Cloudflare Pages deployen
+
+**Wann diese Option wählen:**
+- Du willst **null Kosten**
+- Du bist Geduld gewohnt (Screenshot-Workflow)
+- Du brauchst nur wenige Projekte
+
+---
+
+### Vergleich der 3 Optionen
+
+| | Option A (Voll) | Option B (Demo+Gratis) | Option C (Manuell) |
+|---|---|---|---|
+| **Kosten** | ~33–43€/Mo | ~0–15€/Mo | 0€/Mo |
+| **Prompting** | Unlimitiert | Demo-Limits | Free-Tier Limits |
+| **Deployment** | One-Click | GitHub → Pages (2 Min) | Manuell |
+| **Live-Preview** | Ja, in Sandbox | Nein | Nein |
+| **Komfort** | Wie Lovable/Bolt | Fast wie Lovable | Screenshot-Workflow |
+| **Braucht WfP ($23)?** | **JA** | **NEIN** | **NEIN** |
+| **Braucht Workers ($5)?** | **JA** | **NEIN** | **NEIN** |
+
+### Meine Empfehlung: Starte mit Option B!
+
+1. **Teste build.cloudflare.dev** — generiere ein paar Apps kostenlos
+2. **Exportiere nach GitHub** und deploye auf Cloudflare Pages (gratis)
+3. **Wenn dir die Demo-Limits nicht reichen** → upgrade auf Option A
+4. So sparst du erstmal 100% und siehst ob dir das Konzept taugt
+
+**Kostenlos dabei (in allen Optionen):**
 - Deine All-Inkl Domain
-- Cloudflare DNS (Free Plan)
+- Cloudflare DNS + Pages (Free Plan)
 - Supabase Datenbank (Free Tier)
 - GitHub (Free)
-- VibeSDK Software (MIT-Lizenz, Open Source)
 - Cloudflare SSL-Zertifikate (automatisch)
+- Vercel Hobby-Plan (Free)
 
 ---
 
