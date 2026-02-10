@@ -150,47 +150,135 @@ das nicht ohne Weiteres möglich.
 
 ---
 
-## Alternativen zum Vergleich
+## Kostenvergleich: Deine aktuelle Situation vs. VibeSDK
 
-| Plattform | Typ | Kosten | Vorteil |
+> Du zahlst aktuell **100€+/Monat** für Lovable Pro + Bolt.new Credits und
+> stösst trotzdem an Limits. Hier der direkte Vergleich:
+
+### Was du jetzt zahlst (geschätzt)
+
+| Plattform | Plan | Kosten/Monat | Was du bekommst |
 |---|---|---|---|
-| **Bolt.new** | SaaS | Ab $0 (Free Tier) | Sofort nutzbar, kein Setup |
-| **Lovable.dev** | SaaS | Ab $0 (Free Tier) | Sofort nutzbar, gute UX |
-| **VibeSDK** | Self-Hosted | ~$30+/Monat | Volle Kontrolle, keine Nutzerlimits |
-| **Replit** | SaaS | Ab $0 (Free Tier) | Einfach, auch für Anfänger |
-| **v0.dev** (Vercel) | SaaS | Ab $0 (Free Tier) | Gut für UI-Komponenten |
+| **Lovable.dev Pro** | $25/Monat (~23€) | ~23€ | 100 Credits + 5/Tag (max ~150/Monat) |
+| **Bolt.new Pro** | $20–50/Monat | ~19–47€ | 10–26M Tokens |
+| **Extra Credits/Reloads** | variabel | ~30–50€+ | Wenn die Credits nicht reichen |
+| **GESAMT** | | **~100€+/Monat** | **Mit harten Limits** |
 
-### Empfehlung für Anfänger
+### Das Problem mit Credits
 
-Wenn du **Anfänger bist und nicht programmieren kannst**, ist der einfachste
-Weg:
+- **Lovable:** Ein einfacher Button-Farbwechsel kostet ~0.5 Credits, eine
+  ganze App-Struktur 2+ Credits. Bei 150 Credits/Monat bist du bei intensiver
+  Nutzung schnell am Limit.
+- **Bolt.new:** Token-Verbrauch ist aggressiv! Nutzer berichten, dass eine
+  einfache Auth-Bug-Behebung **3–5 Millionen Tokens** verschlingen kann.
+  Manche verlieren 1.3M Tokens an einem einzigen Tag.
+- **Dein Screenshot-Workflow** (Screenshot -> LLM -> Code einsetzen) kostet
+  extra Zeit UND die Credits laufen trotzdem weiter.
 
-1. **Zuerst ausprobieren:** Teste die Live-Demo auf
-   [build.cloudflare.dev](https://build.cloudflare.dev) kostenlos
-2. **Alternativen testen:** Probiere auch [Bolt.new](https://bolt.new) und
-   [Lovable.dev](https://lovable.dev) aus — die funktionieren sofort ohne Setup
-3. **Dann entscheiden:** Wenn du die volle Kontrolle willst und bereit bist
-   ~$30+/Monat zu zahlen, deploye VibeSDK
+### Was VibeSDK kosten würde
 
-Der Vorteil von VibeSDK gegenüber Bolt/Lovable: **Keine Nutzungslimits**
-(ausser deinem eigenen Budget), du kannst es anpassen, und du kannst es
-sogar kommerziell nutzen und anderen Leuten zur Verfügung stellen.
+| Posten | Kosten/Monat | Beschreibung |
+|---|---|---|
+| Cloudflare Workers Paid | ~5€ | Basis-Infrastruktur |
+| Workers for Platforms | ~23€ | Für App-Deployment |
+| **Gemini 2.5 Flash API** | ~5–15€ | Günstigstes brauchbares Modell |
+| **Gemini 2.5 Pro API** | ~15–40€ | Bessere Qualität, teurer |
+| Cloudflare D1/R2/KV | ~0€ | Meist im Free Tier |
+| Containers/Sandboxes | ~2–10€ | Je nach Nutzung |
+| **GESAMT (Flash)** | **~35–53€/Monat** | **OHNE jedes Limit** |
+| **GESAMT (Pro)** | **~45–78€/Monat** | **OHNE jedes Limit** |
+
+### Der entscheidende Unterschied
+
+| | Lovable + Bolt | VibeSDK |
+|---|---|---|
+| **Kosten** | ~100€+/Monat | ~35–78€/Monat |
+| **Limits** | Harte Credit/Token-Grenzen | Keine! Nur dein Budget |
+| **Wenn Credits leer** | Warten oder nachkaufen | Einfach weitermachen |
+| **Error-Loops** | Fressen deine Credits auf | Kosten nur API-Tokens |
+| **Screenshot-Workflow** | Nötig bei Problemen | Eingebautes Auto-Debugging |
+| **Anpassbar** | Nein, du nimmst was du kriegst | Ja, Open Source |
+| **Eigene Domain** | Aufpreis / höherer Plan | Ja, inkludiert |
+
+### Rechenbeispiel: Gemini API-Kosten im Detail
+
+Bei VibeSDK zahlst du direkt an Google — **ohne Plattform-Aufschlag**:
+
+**Gemini 2.5 Flash** (Standard für Code-Generierung):
+- Input: $0.15 pro 1M Tokens
+- Output: $0.60 pro 1M Tokens
+- 1 App generieren (ca. 50K Input + 20K Output) = **~$0.02** (2 Cent!)
+- 100 Apps/Monat = **~$2**
+- 500 Chat-Nachrichten/Monat (mit Debugging) = **~$5–10**
+
+**Gemini 2.5 Pro** (für komplexere Projekte):
+- Input: $1.25 pro 1M Tokens
+- Output: $10.00 pro 1M Tokens
+- Gleiche Nutzung wie oben = **~$15–30/Monat**
+
+> **Zum Vergleich:** Bei Lovable bezahlst du effektiv **~0.70€ pro Credit**.
+> Bei VibeSDK mit Gemini Flash kostet die gleiche Aktion oft nur **2–5 Cent**.
+
+### Empfehlung für deine Situation
+
+Du bist **kein normaler Anfänger** — du bist ein erfahrener Vibe-Coder, der:
+- Schon mit mehreren Plattformen gearbeitet hat (Bolt, Lovable, Rocket, Bubble)
+- Den Screenshot -> LLM -> Fix-Workflow beherrscht
+- Sich nicht von Fehlern abschrecken lässt
+- Echte Projekte baut (Hufmanager!)
+
+**VibeSDK lohnt sich für dich**, weil:
+1. **Kostenersparnis:** ~35–53€ statt 100€+ (bei Gemini Flash)
+2. **Keine Limits:** Kein Credit-Stress, kein "oh nein, nur noch 5 Credits"
+3. **Error-Loops kosten fast nichts:** Wenn die KI 10 Versuche braucht,
+   kostet das bei Flash vielleicht 20 Cent statt 10 Credits
+4. **Lerneffekt:** Du verstehst besser wie alles zusammenhängt
 
 ---
 
-## Fazit
+## Alternativen zum Vergleich (detailliert)
 
-VibeSDK ist ein beeindruckendes Projekt, aber sei realistisch:
+### Preisvergleich aller Plattformen
 
-- **Deployen** ist dank One-Click relativ einfach — aber nicht fehlerfrei
-- **Probleme lösen** wenn etwas nicht funktioniert, erfordert technisches
-  Grundwissen oder Geduld + Recherche
-- **Laufende Kosten** von mindestens ~$30/Monat solltest du einplanen
-- **Für den Anfang** ist es sinnvoller, zuerst die kostenlosen Alternativen
-  (Bolt, Lovable, die VibeSDK-Demo) auszuprobieren
+| Plattform | Typ | Einstieg | "Power-User" | Limits |
+|---|---|---|---|---|
+| **Bolt.new Pro** | SaaS | $20/Mo (10M Tokens) | $100/Mo (55M Tokens) | Token-basiert, aggressiver Verbrauch |
+| **Lovable.dev Pro** | SaaS | $25/Mo (150 Credits) | $50/Mo (Business) | Credit-basiert, kein Rollover tägl. |
+| **VibeSDK** | Self-Hosted | ~$35/Mo | ~$50–80/Mo | **Keine Limits** |
+| **Replit** | SaaS | $0 (Free) | $25/Mo | Compute-basiert |
+| **v0.dev** | SaaS | $0 (Free) | $20/Mo | Message-basiert |
+| **Rocket.new** | SaaS | variabel | variabel | variabel |
 
-Wenn du trotzdem loslegen willst: Folge der Schritt-für-Schritt-Anleitung
-oben und lass dich nicht entmutigen, wenn beim ersten Mal etwas nicht klappt.
+### Was für wen am besten ist
+
+- **Gelegentliche Nutzung (< 1 Projekt/Monat):** Lovable Free + Bolt Free reicht
+- **Regelmässige Nutzung (deine Situation):** **VibeSDK** spart Geld
+- **Team/Agentur:** VibeSDK (keine pro-User-Kosten)
+- **Maximale Bequemlichkeit:** Lovable/Bolt (kein Setup nötig)
+
+---
+
+## Fazit: Lohnt sich VibeSDK für dich?
+
+**Ja, sehr wahrscheinlich.** Hier ist warum:
+
+- Du sparst **40–65€/Monat** im Vergleich zu deinem jetzigen Setup
+- Du hast **keine Credit-Limits** mehr — der grösste Schmerzpunkt fällt weg
+- Error-Debugging-Loops (die bei dir oft vorkommen) kosten fast nichts
+- Du bist schon gewohnt, mit Fehlern umzugehen — das Cloudflare-Setup
+  wirst du hinbekommen
+
+**Risiken:**
+- Einmalig ~2–4 Stunden für Setup einplanen (mit Troubleshooting)
+- Du bist an Cloudflare gebunden (kein Wechsel zu AWS etc.)
+- VibeSDK generiert nur React/TypeScript — wenn du andere Stacks brauchst,
+  ist das ein Problem
+- Die Code-Qualität hängt vom Gemini-Modell ab (aber du kannst auch
+  Anthropic/OpenAI-Modelle einbinden über den AI Gateway)
+
+**Nächster Schritt:** Teste erstmal die Demo auf
+[build.cloudflare.dev](https://build.cloudflare.dev) — wenn dir die
+Oberfläche gefällt, lohnt sich das eigene Deployment.
 
 ---
 
@@ -202,3 +290,6 @@ oben und lass dich nicht entmutigen, wenn beim ersten Mal etwas nicht klappt.
 - [Sabrina.dev: I built my own vibe coding platform with VibeSDK](https://www.sabrina.dev/p/i-built-my-own-vibe-coding-platform-vibesdk)
 - [MarkTechPost: CloudFlare AI Team Open-Sourced VibeSDK](https://www.marktechpost.com/2025/09/23/cloudflare-ai-team-just-open-sourced-vibesdk-that-lets-anyone-build-and-deploy-a-full-ai-vibe-coding-platform-with-a-single-click/)
 - [Cloudflare Reference Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
+- [Google Gemini API Pricing](https://ai.google.dev/gemini-api/docs/pricing)
+- [Lovable.dev Pricing](https://www.superblocks.com/blog/lovable-dev-pricing)
+- [Bolt.new Pricing](https://bolt.new/pricing)
