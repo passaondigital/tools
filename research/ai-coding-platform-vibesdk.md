@@ -138,10 +138,44 @@ Cloudflare-spezifische Technologien:
 - D1 und R2 (Datenbank und Speicher)
 - Sandboxes/Containers (isolierte Entwicklungsumgebungen)
 
-### KI-Qualität
+### KI-Modelle: Nicht nur Gemini — auch Claude, GPT & mehr!
+
+VibeSDK ist **Open Source (MIT-Lizenz)** und nutzt den **Cloudflare AI Gateway**
+als Routing-Layer. Das bedeutet:
+
+**Du kannst das KI-Modell frei wählen und wechseln:**
+
+| Provider | Modelle (Beispiele) | Format |
+|---|---|---|
+| **Google** | Gemini 2.5 Pro, Flash, Flash-Lite | `google/gemini-2.5-pro` |
+| **Anthropic** | Claude Opus, Sonnet, Haiku | `anthropic/claude-sonnet-4-5` |
+| **OpenAI** | GPT-4o, o1, o3 | `openai/gpt-4o` |
+| **xAI** | Grok | `xai/grok-...` |
+| **Groq** | LLaMA, Mixtral (schnell!) | `groq/llama-...` |
+| **+ 350 weitere** | Über AI Gateway verfügbar | `provider/model` |
+
+**So wechselst du das Modell:**
+Du änderst einfach den `model`-Parameter im Format `provider/modellname`.
+Kein Code-Umbau nötig — nur eine Config-Änderung.
+
+**Vorteile des AI Gateways:**
+- **Unified Billing:** Alle Modell-Kosten über eine Cloudflare-Rechnung
+- **Fallback:** Wenn ein Provider ausfällt, wird automatisch ein anderer genommen
+- **Caching:** Häufige Anfragen werden gecacht (spart Geld!)
+- **Observability:** Du siehst genau welches Modell wie viele Tokens verbraucht
+- **Mix & Match:** Günstiges Modell (Flash) für einfache Tasks,
+  teures Modell (Claude/GPT-4o) für komplexe Tasks
+
+**Was das für dich bedeutet:**
+- Du kannst mit **Gemini Flash** starten (am günstigsten)
+- Für schwierige Projekte auf **Claude** oder **GPT-4o** wechseln
+- Du bist an **keinen einzelnen KI-Anbieter gebunden**
+- Wenn ein neues besseres Modell rauskommt, einfach eintragen und nutzen
+
+### KI-Qualität allgemein
 Die Qualität der generierten Apps hängt stark vom verwendeten KI-Modell ab.
-Gemini-Modelle sind gut, aber nicht perfekt. Komplexe Apps werden
-wahrscheinlich Nacharbeit erfordern.
+Kein Modell ist perfekt. Komplexe Apps werden wahrscheinlich Nacharbeit
+erfordern — aber du kennst das ja schon von Lovable.
 
 ### Nicht für jede App geeignet
 VibeSDK generiert standardmässig **React + TypeScript + Tailwind** Apps. Wenn
