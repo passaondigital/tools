@@ -193,12 +193,87 @@ das nicht ohne Weiteres möglich.
 | | Lovable + Bolt | VibeSDK |
 |---|---|---|
 | **Kosten** | ~100€+/Monat | ~35–78€/Monat |
-| **Limits** | Harte Credit/Token-Grenzen | Keine! Nur dein Budget |
+| **Limits** | Harte Credit/Token-Grenzen | Keine künstlichen Limits (s.u.) |
 | **Wenn Credits leer** | Warten oder nachkaufen | Einfach weitermachen |
 | **Error-Loops** | Fressen deine Credits auf | Kosten nur API-Tokens |
 | **Screenshot-Workflow** | Nötig bei Problemen | Eingebautes Auto-Debugging |
 | **Anpassbar** | Nein, du nimmst was du kriegst | Ja, Open Source |
 | **Eigene Domain** | Aufpreis / höherer Plan | Ja, inkludiert |
+
+---
+
+## Was "Keine Limits" wirklich bedeutet (und was nicht)
+
+### Prompting / KI-Chat (UNLIMITIERT)
+
+Es gibt **kein Credit-System** wie bei Lovable (150 Credits/Monat) oder
+Bolt (10M Tokens). Du kannst so viel prompten wie du willst — 10 Nachrichten
+oder 10.000 am Tag. Du bezahlst nur die tatsächlichen Gemini API-Kosten:
+
+| Aktion | Geschätzte Kosten (Gemini 2.5 Flash) |
+|---|---|
+| 1 Prompt/Antwort (einfach) | ~$0.001–0.005 (Bruchteil eines Cents) |
+| 1 App komplett generieren | ~$0.02–0.05 (2–5 Cent) |
+| Error-Loop (10 Versuche) | ~$0.10–0.20 (10–20 Cent) |
+| Intensiver Tag (50+ Prompts) | ~$0.50–2.00 |
+| Ganzer Monat (Heavy Use) | ~$5–30 je nach Modell |
+
+**Kein "Credits sind leer — warte bis morgen".** Du bezahlst einfach was du
+verbrauchst. Und bei Gemini Flash ist das extrem günstig.
+
+### App-Entwicklung / Tools bauen (UNLIMITIERT)
+
+- Du kannst **unbegrenzt viele Projekte** anlegen
+- Du kannst **unbegrenzt Code generieren** lassen
+- Jedes Projekt bekommt eine eigene Sandbox (isolierte Umgebung)
+- Die Sandboxen **skalieren auf Null** — wenn du nicht arbeitest, zahlst du
+  kein CPU/Memory
+
+### Deployment / Apps veröffentlichen (UNLIMITIERT mit Kosten)
+
+Workers for Platforms erlaubt eine **unbegrenzte Anzahl an deployten Apps**.
+Das ist der grosse Unterschied zu normalen Cloudflare Workers (max 500).
+
+Jede deployte App:
+- Bekommt eine eigene URL
+- Läuft isoliert von anderen Apps
+- Kostet nur bei tatsächlicher Nutzung (Requests)
+
+**Inkludiert im $5/Mo Workers Paid Plan:**
+- 10 Millionen Requests/Monat
+- 30 Millionen CPU-Millisekunden/Monat
+- Darüber hinaus: $0.30 pro weitere Million Requests
+
+Für persönliche Projekte oder kleine Apps reicht das locker.
+
+### Was tatsächlich Grenzen hat
+
+| Ressource | Inkludiert (Paid Plan) | Danach |
+|---|---|---|
+| **Worker Requests** | 10M/Monat | $0.30 pro 1M |
+| **CPU-Zeit** | 30M CPU-ms/Monat | $0.02 pro 1M CPU-ms |
+| **KV Reads** | 10M/Monat | $0.50 pro 1M |
+| **KV Writes** | 1M/Monat | $5.00 pro 1M |
+| **KV Storage** | 1 GB | $0.50 pro GB |
+| **D1 (Datenbank)** | Max 10 GB pro DB | Rows Read/Written kosten |
+| **R2 (Dateispeicher)** | 10 GB + 1M Writes | $0.015/GB/Monat |
+| **Container CPU** | Im Plan inkl. | $0.00002/vCPU-Sekunde |
+| **Container Memory** | Im Plan inkl. | Pro GiB-Sekunde |
+
+**Wichtig:** Diese Grenzen sind **weiche Grenzen** — du wirst nicht
+abgeschnitten wie bei Lovable. Du zahlst einfach den Mehrverbrauch.
+Bei normalem Gebrauch (ein paar Projekte, persönliche Nutzung) bleibst du
+sehr wahrscheinlich unter den inkludierten Kontingenten.
+
+### Zusammenfassung: Lovable-Limits vs. VibeSDK
+
+| Situation | Lovable Pro | VibeSDK |
+|---|---|---|
+| Du hast 150 Credits verbraucht | **STOPP.** Warten oder nachkaufen. | Weitermachen. Kostet ein paar Cent. |
+| Error-Loop frisst 20 Credits | 20 Credits = ~14€ weg | 20 Cent Gemini-Kosten |
+| Du willst 5 Apps an einem Tag bauen | Evtl. nicht genug Credits | Kein Problem, ~25 Cent |
+| Du willst 10 Apps deployen | Deployment-Limits möglich | Unbegrenzt, jede App kriegt URL |
+| Monatsende, Budget knapp | Credits rationieren | Gemini-Limit setzen, z.B. $5 |
 
 ### Rechenbeispiel: Gemini API-Kosten im Detail
 
