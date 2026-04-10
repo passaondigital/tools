@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #08080A;
+    --bg-secondary: #0F0F12;
+    --bg-surface: rgba(255, 255, 255, 0.03);
+    --gold-primary: #C9A84C;
+    --gold-light: #E8D5A0;
+    --gold-glow: rgba(201, 168, 76, 0.25);
+    --text-primary: #E8E4DD;
+    --text-muted: rgba(232, 228, 221, 0.35);
+    --text-subtle: rgba(232, 228, 221, 0.15);
+    --border-default: rgba(255, 255, 255, 0.06);
+    --border-active: rgba(201, 168, 76, 0.5);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* ── Typography ── */
+  .text-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .text-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(201, 168, 76, 0.6);
+  }
+
+  /* ── Gold shimmer text ── */
+  .text-gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--gold-primary) 0%,
+      var(--gold-light) 50%,
+      var(--gold-primary) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* ── Buttons ── */
+  .btn-inactive {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-inactive:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    color: var(--text-primary);
+  }
+
+  .btn-active {
+    background: rgba(201, 168, 76, 0.15);
+    border: 1px solid var(--border-active);
+    border-radius: 8px;
+    color: var(--gold-primary);
+    cursor: pointer;
+  }
+
+  .btn-cta {
+    background: linear-gradient(135deg, #C9A84C, #E8D5A0);
+    color: #0a0700;
+    border-radius: 14px;
+    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 4px 24px var(--gold-glow);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
+  }
+
+  .btn-cta:active {
+    transform: translateY(0);
+  }
+
+  /* ── Inputs ── */
+  .input-field {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 14px 16px;
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    width: 100%;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  .input-field::placeholder {
+    color: var(--text-muted);
+  }
+
+  .input-field:focus {
+    border-color: var(--border-active);
+    background: rgba(201, 168, 76, 0.05);
+  }
+
+  /* ── Cards ── */
+  .card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+  }
+
+  .card-surface {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+  }
+
+  /* ── Selection Grid Items ── */
+  .select-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-default);
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .select-item:hover {
+    border-color: rgba(201, 168, 76, 0.3);
+    color: var(--text-primary);
+    background: rgba(201, 168, 76, 0.05);
+  }
+
+  .select-item.selected {
+    background: rgba(201, 168, 76, 0.12);
+    border-color: var(--border-active);
+    color: var(--gold-primary);
+  }
+
+  /* ── Progress Bar ── */
+  .progress-step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-default);
+    transition: all 0.3s ease;
+  }
+
+  .progress-dot.active {
+    background: var(--gold-primary);
+    box-shadow: 0 0 8px var(--gold-glow);
+  }
+
+  .progress-dot.done {
+    background: rgba(201, 168, 76, 0.4);
+  }
+
+  /* ── Watermark ── */
+  .watermark-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .watermark-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    transform: rotate(-30deg);
+    white-space: nowrap;
+  }
+
+  /* ── Logo Preview SVG Canvas ── */
+  .logo-canvas {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Hover lift ── */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  /* ── Section divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--border-default),
+      transparent
+    );
+    width: 100%;
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: var(--gold-primary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .text-subtle {
+    color: var(--text-subtle);
+  }
+
+  .border-gold {
+    border-color: var(--border-active);
+  }
+}
